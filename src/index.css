@@ -1,0 +1,97 @@
+@import "@flaticon/flaticon-uicons/css/all/all";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+.filterBtn {
+  /* border rounded-full py-3 px-4 text-xl font-semibold shadow-sm */
+  border: 1px solid rgb(209, 202, 202);
+  border-radius: 30px;
+  padding: 8px 16px 8px 16px;
+  font-size: 20px;
+  box-shadow: 1px 1px rgb(236, 234, 234);
+  font-weight: 600;
+}
+
+.activeFilterBtn {
+  border: 1px solid rgb(1, 1, 1);
+  border-radius: 30px;
+  color: white;
+  background-color: rgb(40, 41, 43);
+  padding: 8px 16px 8px 16px;
+  font-size: 20px;
+  box-shadow: 1px 1px rgb(236, 234, 234);
+  font-weight: 600;
+}
+
+.activeFilterBtn i{
+  display: block;
+}
+
+.zoom-out {
+  transform: scale(0.8); /* Zoom out to 50% */
+  transform-origin: center;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #FFF;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shimmer.css */
+
+.shimmer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.shimmer-card {
+  width: 300px;
+  height: 200px;
+  background: #f6f7f8;
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 800px 200px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+  box-shadow: 1px 1px rgb(225, 220, 220);
+}
+
+/* Keyframes for shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
