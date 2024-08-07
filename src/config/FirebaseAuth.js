@@ -8,7 +8,15 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig =JSON.parse(import.meta.env.VITE_KEY);
+const firebaseConfig = {
+  "apiKey":import.meta.enc.VITE_AOIKEY ,
+  "authDomain":import.meta.enc.VITE_AUTHDOMAIN ,
+  "projectId":import.meta.enc.VITE_PROJECTID ,
+  "storageBucket": import.meta.enc.VITE_STORAGEBUCKET,
+  "messagingSenderId": import.meta.enc.VITE_MESSAGINGSENDERID,
+  "appId": import.meta.enc.VITE_APPID
+
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
