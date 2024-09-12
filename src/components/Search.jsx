@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeAll } from "../utilities/cart-slice";
 import toast from "react-hot-toast";
 import { setFirtItem, setIsDiffRes } from "../utilities/dif-res";
-import FoodCard3 from "./Food-Card-3";
+import FoodCard3, { withHOC } from "./Food-Card-3";
 import { setResults } from "../utilities/search-slice";
 import { toggleMoreDishes } from "../utilities/toogle-slice";
 import AddBtn from "./Add-btn";
@@ -18,6 +18,8 @@ function Search() {
   const [moreDishes, setMoreDishes] = useState([]);
   const [dishes, setDishes] = useState([]);
   const [resturantData, setResturantData] = useState([]);
+
+  const PromotedRestaurent=withHOC(FoodCard3)
 
   const [input, setInput] = useState("");
   // const [results, setResults] = useState([]);
@@ -52,6 +54,7 @@ function Search() {
       `${import.meta.env.VITE_BASE_URL}/restaurants/search/v3?lat=${lat}&lng=${lng}&str=${itemName}&trackingId=undefined&submitAction=SUGGESTION&selectedPLTab=dish-add&restaurantMenuUrl=${resPlaceURL}-rest${resId}%3Fquery%3DPunjabi%2BAngithi%2B%2528Vegorama%2BGroup%2529&restaurantIdOfAddedItem=${resId}&itemAdded=${itemId}&metaData=%7B%22type%22%3A%22RESTAURANT%22%2C%22data%22%3A%7B%22parentId%22%3A465050%2C%22primaryRestaurantId%22%3A326429%2C%22cloudinaryId%22%3A%22lgfkquq3npd3r9oiy62b%22%2C%22brandId%22%3A465050%2C%22enabled_flag%22%3A1%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Restaurant%22%7D`
     );
     let res = await data.json();
+    console.log(res)
     setResturantData(
       res.data.cards.filter((data) => data.card.card.restaurant?.info)[0].card
         .card.restaurant.info
@@ -340,6 +343,7 @@ const { text, field }=input
                                   <div className="flex w-[100%] flex-wrap  gap-4 mt-4">
                                     {moreLikeThis[0].card.card.restaurants.map(
                                       ({ info }) => (
+                                        info.promoted ? (console.log(PromotedRestaurent), <PromotedRestaurent info={info } />):
                                         <FoodCard3 key={info.id} info={info} />
                                       )
                                     )}
